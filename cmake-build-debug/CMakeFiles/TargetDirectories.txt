@@ -1,0 +1,3 @@
+/home/tommaso/CLionProjects/ShopList/cmake-build-debug/CMakeFiles/ShopList.dir
+/home/tommaso/CLionProjects/ShopList/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/tommaso/CLionProjects/ShopList/cmake-build-debug/CMakeFiles/rebuild_cache.dir
