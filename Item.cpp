@@ -12,5 +12,6 @@ const std::string &Item::getCategory() const {
 int Item::getQuantity() const {
     return quantity;
 }
-
-Item::Item(std::string nome, std::string cat, int qty) : name(std::move(nome)),category(std::move(cat)),quantity(qty){}
+//imposta qty a zero se viene inserito un valore negativo
+Item::Item(std::string nome, std::string cat, int qty)
+    : name(std::move(nome)),category(std::move(cat)),quantity(qty < 0 ? 0: qty){}

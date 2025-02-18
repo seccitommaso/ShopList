@@ -28,3 +28,10 @@
 2971	5647	1739892177335689129	test/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o	de9e1e989676879e
 5647	5656	1739892177345689241	lib/libgmock_main.a	6b9c60a8858afb48
 5656	6116	1739892177802694372	test/runShopListTests	d7b56d189eb127d9
+2	1550	1739892760137566163	test/CMakeFiles/runShopListTests.dir/ItemTest.cpp.o	f5f5c8ada20517d5
+1550	1884	1739892760469568020	test/runShopListTests	d7b56d189eb127d9
+2	390	1739892876747211794	CMakeFiles/core.dir/Item.cpp.o	4072cbc734c2a4c
+390	545	1739892876901212639	libcore.a	5f0363ea672b60a7
+545	895	1739892877250214553	test/runShopListTests	d7b56d189eb127d9
+2	1751	1739893196633939607	test/CMakeFiles/runShopListTests.dir/UserTest.cpp.o	6bc592e437dabc5e
+1751	2108	1739893196989941510	test/runShopListTests	d7b56d189eb127d9
