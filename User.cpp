@@ -80,7 +80,7 @@ void User::shareShoppingList(User* otherUser, const std::string& listName) {
     }
 }
 void User::update(const std::string& listName) {
-    std::cout<<"L'utente "<<name<<" ha ricevuto un  aggiornamento della lista\""<<listName<<"\"."<<std::endl;
+    std::cout<<"L'utente "<<name<<" ha ricevuto un aggiornamento della lista \""<<listName<<"\"."<<std::endl;
 }
 
 void User::viewAllShoppingLists() {
