@@ -73,12 +73,6 @@ build CMakeFiles/ShopList.dir/Item.cpp.o: CXX_COMPILER__ShopList_unscanned_Debug
   OBJECT_DIR = CMakeFiles/ShopList.dir
   OBJECT_FILE_DIR = CMakeFiles/ShopList.dir
 
-build CMakeFiles/ShopList.dir/nnn.cpp.o: CXX_COMPILER__ShopList_unscanned_Debug /home/tommaso/CLionProjects/ShopList/nnn.cpp || cmake_object_order_depends_target_ShopList
-  DEP_FILE = CMakeFiles/ShopList.dir/nnn.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/ShopList.dir
-  OBJECT_FILE_DIR = CMakeFiles/ShopList.dir
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ShopList
@@ -87,7 +81,7 @@ build CMakeFiles/ShopList.dir/nnn.cpp.o: CXX_COMPILER__ShopList_unscanned_Debug 
 #############################################
 # Link the executable ShopList
 
-build ShopList: CXX_EXECUTABLE_LINKER__ShopList_Debug CMakeFiles/ShopList.dir/main.cpp.o CMakeFiles/ShopList.dir/User.cpp.o CMakeFiles/ShopList.dir/ShoppingList.cpp.o CMakeFiles/ShopList.dir/Item.cpp.o CMakeFiles/ShopList.dir/nnn.cpp.o
+build ShopList: CXX_EXECUTABLE_LINKER__ShopList_Debug CMakeFiles/ShopList.dir/main.cpp.o CMakeFiles/ShopList.dir/User.cpp.o CMakeFiles/ShopList.dir/ShoppingList.cpp.o CMakeFiles/ShopList.dir/Item.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/ShopList.dir
   POST_BUILD = :

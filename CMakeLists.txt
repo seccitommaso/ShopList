@@ -12,5 +12,4 @@ add_executable(ShopList main.cpp
         ShoppingList.h
         Item.cpp
         Item.h
-        nnn.cpp
-        nnn.h)
+        )

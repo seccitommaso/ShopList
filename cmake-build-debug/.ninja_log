@@ -1,0 +1,7 @@
+# ninja log v5
+1	27	1739815152678195259	build.ninja	e8f063c48551b677
+0	779	1739815153464189917	CMakeFiles/ShopList.dir/main.cpp.o	eea6adc7b19e837d
+1	854	1739815153538189414	CMakeFiles/ShopList.dir/User.cpp.o	448f9d78cc72b2a3
+1	863	1739815153547189353	CMakeFiles/ShopList.dir/ShoppingList.cpp.o	ca39b98cfbc73223
+780	1177	1739815153862187215	CMakeFiles/ShopList.dir/Item.cpp.o	44a9694fd0408df1
+1177	1346	1739815154030186076	ShopList	2c15e5f3b8656ce6
