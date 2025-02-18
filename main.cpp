@@ -50,7 +50,7 @@ void showShoppingListMenu(User* user, const std::vector<User*>& users) {
 
     int choice;
     do {
-        std::cout << "\n--- 🛒 Menu Lista della Spesa ---\n"
+        std::cout << "\n--- 🛒 Menu Lista della Spesa di "<<user->getName()<<"---\n"
                   << "1️⃣  Crea una nuova lista\n"
                   << "2️⃣  Visualizza tutte le liste\n"
                   << "3️⃣  Aggiungi un oggetto a una lista\n"
@@ -76,7 +76,6 @@ void showShoppingListMenu(User* user, const std::vector<User*>& users) {
             case 3: {
                 std::string listName, itemName, category;
                 int quantity;
-
                 std::cout << "Nome della lista: ";
                 std::getline(std::cin, listName);
                 std::cout << "Nome dell'oggetto: ";

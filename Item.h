@@ -1,6 +1,3 @@
-//
-// Created by tommaso on 17/02/25.
-//
 
 #ifndef SHOPLIST_ITEM_H
 #define SHOPLIST_ITEM_H

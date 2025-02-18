@@ -47,28 +47,10 @@ cmake_ninja_workdir = /home/tommaso/CLionProjects/ShopList/cmake-build-debug/
 #############################################
 # Order-only phony target for ShopList
 
-build cmake_object_order_depends_target_ShopList: phony || CMakeFiles/ShopList.dir
+build cmake_object_order_depends_target_ShopList: phony || cmake_object_order_depends_target_core
 
 build CMakeFiles/ShopList.dir/main.cpp.o: CXX_COMPILER__ShopList_unscanned_Debug /home/tommaso/CLionProjects/ShopList/main.cpp || cmake_object_order_depends_target_ShopList
   DEP_FILE = CMakeFiles/ShopList.dir/main.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/ShopList.dir
-  OBJECT_FILE_DIR = CMakeFiles/ShopList.dir
-
-build CMakeFiles/ShopList.dir/User.cpp.o: CXX_COMPILER__ShopList_unscanned_Debug /home/tommaso/CLionProjects/ShopList/User.cpp || cmake_object_order_depends_target_ShopList
-  DEP_FILE = CMakeFiles/ShopList.dir/User.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/ShopList.dir
-  OBJECT_FILE_DIR = CMakeFiles/ShopList.dir
-
-build CMakeFiles/ShopList.dir/ShoppingList.cpp.o: CXX_COMPILER__ShopList_unscanned_Debug /home/tommaso/CLionProjects/ShopList/ShoppingList.cpp || cmake_object_order_depends_target_ShopList
-  DEP_FILE = CMakeFiles/ShopList.dir/ShoppingList.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/ShopList.dir
-  OBJECT_FILE_DIR = CMakeFiles/ShopList.dir
-
-build CMakeFiles/ShopList.dir/Item.cpp.o: CXX_COMPILER__ShopList_unscanned_Debug /home/tommaso/CLionProjects/ShopList/Item.cpp || cmake_object_order_depends_target_ShopList
-  DEP_FILE = CMakeFiles/ShopList.dir/Item.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/ShopList.dir
   OBJECT_FILE_DIR = CMakeFiles/ShopList.dir
@@ -81,13 +63,57 @@ build CMakeFiles/ShopList.dir/Item.cpp.o: CXX_COMPILER__ShopList_unscanned_Debug
 #############################################
 # Link the executable ShopList
 
-build ShopList: CXX_EXECUTABLE_LINKER__ShopList_Debug CMakeFiles/ShopList.dir/main.cpp.o CMakeFiles/ShopList.dir/User.cpp.o CMakeFiles/ShopList.dir/ShoppingList.cpp.o CMakeFiles/ShopList.dir/Item.cpp.o
+build ShopList: CXX_EXECUTABLE_LINKER__ShopList_Debug CMakeFiles/ShopList.dir/main.cpp.o | libcore.a || libcore.a
   FLAGS = -g
+  LINK_LIBRARIES = libcore.a
   OBJECT_DIR = CMakeFiles/ShopList.dir
   POST_BUILD = :
   PRE_LINK = :
   TARGET_FILE = ShopList
   TARGET_PDB = ShopList.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target core
+
+
+#############################################
+# Order-only phony target for core
+
+build cmake_object_order_depends_target_core: phony || CMakeFiles/core.dir
+
+build CMakeFiles/core.dir/Item.cpp.o: CXX_COMPILER__core_unscanned_Debug /home/tommaso/CLionProjects/ShopList/Item.cpp || cmake_object_order_depends_target_core
+  DEP_FILE = CMakeFiles/core.dir/Item.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/core.dir
+  OBJECT_FILE_DIR = CMakeFiles/core.dir
+
+build CMakeFiles/core.dir/ShoppingList.cpp.o: CXX_COMPILER__core_unscanned_Debug /home/tommaso/CLionProjects/ShopList/ShoppingList.cpp || cmake_object_order_depends_target_core
+  DEP_FILE = CMakeFiles/core.dir/ShoppingList.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/core.dir
+  OBJECT_FILE_DIR = CMakeFiles/core.dir
+
+build CMakeFiles/core.dir/User.cpp.o: CXX_COMPILER__core_unscanned_Debug /home/tommaso/CLionProjects/ShopList/User.cpp || cmake_object_order_depends_target_core
+  DEP_FILE = CMakeFiles/core.dir/User.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/core.dir
+  OBJECT_FILE_DIR = CMakeFiles/core.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target core
+
+
+#############################################
+# Link the static library libcore.a
+
+build libcore.a: CXX_STATIC_LIBRARY_LINKER__core_Debug CMakeFiles/core.dir/Item.cpp.o CMakeFiles/core.dir/ShoppingList.cpp.o CMakeFiles/core.dir/User.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/core.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = libcore.a
+  TARGET_PDB = core.a.dbg
 
 
 #############################################
@@ -112,8 +138,532 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/tommaso/CLionProjects/ShopList/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target runShopListTests
+
+
+#############################################
+# Order-only phony target for runShopListTests
+
+build cmake_object_order_depends_target_runShopListTests: phony || cmake_object_order_depends_target_core cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gmock_main cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+
+build test/CMakeFiles/runShopListTests.dir/runAllTests.cpp.o: CXX_COMPILER__runShopListTests_unscanned_Debug /home/tommaso/CLionProjects/ShopList/test/runAllTests.cpp || cmake_object_order_depends_target_runShopListTests
+  DEP_FILE = test/CMakeFiles/runShopListTests.dir/runAllTests.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock
+  OBJECT_DIR = test/CMakeFiles/runShopListTests.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/runShopListTests.dir
+
+build test/CMakeFiles/runShopListTests.dir/ItemTest.cpp.o: CXX_COMPILER__runShopListTests_unscanned_Debug /home/tommaso/CLionProjects/ShopList/test/ItemTest.cpp || cmake_object_order_depends_target_runShopListTests
+  DEP_FILE = test/CMakeFiles/runShopListTests.dir/ItemTest.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock
+  OBJECT_DIR = test/CMakeFiles/runShopListTests.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/runShopListTests.dir
+
+build test/CMakeFiles/runShopListTests.dir/ShoppingListTest.cpp.o: CXX_COMPILER__runShopListTests_unscanned_Debug /home/tommaso/CLionProjects/ShopList/test/ShoppingListTest.cpp || cmake_object_order_depends_target_runShopListTests
+  DEP_FILE = test/CMakeFiles/runShopListTests.dir/ShoppingListTest.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock
+  OBJECT_DIR = test/CMakeFiles/runShopListTests.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/runShopListTests.dir
+
+build test/CMakeFiles/runShopListTests.dir/UserTest.cpp.o: CXX_COMPILER__runShopListTests_unscanned_Debug /home/tommaso/CLionProjects/ShopList/test/UserTest.cpp || cmake_object_order_depends_target_runShopListTests
+  DEP_FILE = test/CMakeFiles/runShopListTests.dir/UserTest.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock
+  OBJECT_DIR = test/CMakeFiles/runShopListTests.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/runShopListTests.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target runShopListTests
+
+
+#############################################
+# Link the executable test/runShopListTests
+
+build test/runShopListTests: CXX_EXECUTABLE_LINKER__runShopListTests_Debug test/CMakeFiles/runShopListTests.dir/runAllTests.cpp.o test/CMakeFiles/runShopListTests.dir/ItemTest.cpp.o test/CMakeFiles/runShopListTests.dir/ShoppingListTest.cpp.o test/CMakeFiles/runShopListTests.dir/UserTest.cpp.o | lib/libgtest.a lib/libgtest_main.a lib/libgmock.a lib/libgmock_main.a libcore.a lib/libgmock.a lib/libgtest.a || lib/libgmock.a lib/libgmock_main.a lib/libgtest.a lib/libgtest_main.a libcore.a
+  FLAGS = -g
+  LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  lib/libgmock.a  lib/libgmock_main.a  libcore.a  lib/libgmock.a  lib/libgtest.a
+  OBJECT_DIR = test/CMakeFiles/runShopListTests.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = test/runShopListTests
+  TARGET_PDB = runShopListTests.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build test/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build test/edit_cache: phony test/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build test/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/tommaso/CLionProjects/ShopList -B/home/tommaso/CLionProjects/ShopList/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build test/rebuild_cache: phony test/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build test/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build test/CMakeFiles/install.util: CUSTOM_COMMAND test/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build test/install: phony test/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build test/CMakeFiles/install/local.util: CUSTOM_COMMAND test/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build test/install/local: phony test/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build test/CMakeFiles/install/strip.util: CUSTOM_COMMAND test/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build test/install/strip: phony test/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/tommaso/CLionProjects/ShopList/test/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build test/lib/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build test/lib/googletest/edit_cache: phony test/lib/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build test/lib/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/tommaso/CLionProjects/ShopList -B/home/tommaso/CLionProjects/ShopList/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/rebuild_cache: phony test/lib/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build test/lib/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build test/lib/googletest/CMakeFiles/install.util: CUSTOM_COMMAND test/lib/googletest/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/install: phony test/lib/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build test/lib/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND test/lib/googletest/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/install/local: phony test/lib/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build test/lib/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND test/lib/googletest/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/install/strip: phony test/lib/googletest/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/tommaso/CLionProjects/ShopList/test/lib/googletest/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Order-only phony target for gmock
+
+build cmake_object_order_depends_target_gmock: phony || cmake_object_order_depends_target_gtest
+
+build test/lib/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o: CXX_COMPILER__gmock_unscanned_Debug /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_gmock
+  DEP_FILE = test/lib/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o.d
+  FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -I/home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/include -I/home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest
+  OBJECT_DIR = test/lib/googletest/googlemock/CMakeFiles/gmock.dir
+  OBJECT_FILE_DIR = test/lib/googletest/googlemock/CMakeFiles/gmock.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Link the static library lib/libgmock.a
+
+build lib/libgmock.a: CXX_STATIC_LIBRARY_LINKER__gmock_Debug test/lib/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o || lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = test/lib/googletest/googlemock/CMakeFiles/gmock.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock.a
+  TARGET_PDB = gmock.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Order-only phony target for gmock_main
+
+build cmake_object_order_depends_target_gmock_main: phony || cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gtest
+
+build test/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: CXX_COMPILER__gmock_main_unscanned_Debug /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_gmock_main
+  DEP_FILE = test/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o.d
+  FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest
+  OBJECT_DIR = test/lib/googletest/googlemock/CMakeFiles/gmock_main.dir
+  OBJECT_FILE_DIR = test/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Link the static library lib/libgmock_main.a
+
+build lib/libgmock_main.a: CXX_STATIC_LIBRARY_LINKER__gmock_main_Debug test/lib/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o || lib/libgmock.a lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = test/lib/googletest/googlemock/CMakeFiles/gmock_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock_main.a
+  TARGET_PDB = gmock_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build test/lib/googletest/googlemock/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googlemock && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build test/lib/googletest/googlemock/edit_cache: phony test/lib/googletest/googlemock/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build test/lib/googletest/googlemock/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googlemock && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/tommaso/CLionProjects/ShopList -B/home/tommaso/CLionProjects/ShopList/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googlemock/rebuild_cache: phony test/lib/googletest/googlemock/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build test/lib/googletest/googlemock/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build test/lib/googletest/googlemock/CMakeFiles/install.util: CUSTOM_COMMAND test/lib/googletest/googlemock/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googlemock && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googlemock/install: phony test/lib/googletest/googlemock/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build test/lib/googletest/googlemock/CMakeFiles/install/local.util: CUSTOM_COMMAND test/lib/googletest/googlemock/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googlemock && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googlemock/install/local: phony test/lib/googletest/googlemock/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build test/lib/googletest/googlemock/CMakeFiles/install/strip.util: CUSTOM_COMMAND test/lib/googletest/googlemock/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googlemock && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googlemock/install/strip: phony test/lib/googletest/googlemock/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Order-only phony target for gtest
+
+build cmake_object_order_depends_target_gtest: phony || test/lib/googletest/googletest/CMakeFiles/gtest.dir
+
+build test/lib/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o: CXX_COMPILER__gtest_unscanned_Debug /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/src/gtest-all.cc || cmake_object_order_depends_target_gtest
+  DEP_FILE = test/lib/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o.d
+  FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -I/home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/include -I/home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest
+  OBJECT_DIR = test/lib/googletest/googletest/CMakeFiles/gtest.dir
+  OBJECT_FILE_DIR = test/lib/googletest/googletest/CMakeFiles/gtest.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Link the static library lib/libgtest.a
+
+build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug test/lib/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = test/lib/googletest/googletest/CMakeFiles/gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest.a
+  TARGET_PDB = gtest.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Order-only phony target for gtest_main
+
+build cmake_object_order_depends_target_gtest_main: phony || cmake_object_order_depends_target_gtest
+
+build test/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o: CXX_COMPILER__gtest_main_unscanned_Debug /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/src/gtest_main.cc || cmake_object_order_depends_target_gtest_main
+  DEP_FILE = test/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o.d
+  FLAGS = -g -std=c++17 -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/include -isystem /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest
+  OBJECT_DIR = test/lib/googletest/googletest/CMakeFiles/gtest_main.dir
+  OBJECT_FILE_DIR = test/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Link the static library lib/libgtest_main.a
+
+build lib/libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Debug test/lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o || lib/libgtest.a
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = test/lib/googletest/googletest/CMakeFiles/gtest_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest_main.a
+  TARGET_PDB = gtest_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build test/lib/googletest/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googletest && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build test/lib/googletest/googletest/edit_cache: phony test/lib/googletest/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build test/lib/googletest/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googletest && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/tommaso/CLionProjects/ShopList -B/home/tommaso/CLionProjects/ShopList/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googletest/rebuild_cache: phony test/lib/googletest/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build test/lib/googletest/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build test/lib/googletest/googletest/CMakeFiles/install.util: CUSTOM_COMMAND test/lib/googletest/googletest/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googletest && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googletest/install: phony test/lib/googletest/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build test/lib/googletest/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND test/lib/googletest/googletest/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googletest && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googletest/install/local: phony test/lib/googletest/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build test/lib/googletest/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND test/lib/googletest/googletest/all
+  COMMAND = cd /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googletest && /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build test/lib/googletest/googletest/install/strip: phony test/lib/googletest/googletest/CMakeFiles/install/strip.util
+
 # =============================================================================
 # Target aliases.
+
+build core: phony libcore.a
+
+build gmock: phony lib/libgmock.a
+
+build gmock_main: phony lib/libgmock_main.a
+
+build gtest: phony lib/libgtest.a
+
+build gtest_main: phony lib/libgtest_main.a
+
+build libgmock.a: phony lib/libgmock.a
+
+build libgmock_main.a: phony lib/libgmock_main.a
+
+build libgtest.a: phony lib/libgtest.a
+
+build libgtest_main.a: phony lib/libgtest_main.a
+
+build runShopListTests: phony test/runShopListTests
 
 # =============================================================================
 # Folder targets.
@@ -123,7 +673,35 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/tommaso/CLionProjects/ShopList/cmake-build-debug
 
-build all: phony ShopList
+build all: phony ShopList libcore.a test/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test
+
+build test/all: phony test/runShopListTests test/lib/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest
+
+build test/lib/googletest/all: phony test/lib/googletest/googlemock/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googlemock
+
+build test/lib/googletest/googlemock/all: phony lib/libgmock.a lib/libgmock_main.a test/lib/googletest/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/tommaso/CLionProjects/ShopList/cmake-build-debug/test/lib/googletest/googletest
+
+build test/lib/googletest/googletest/all: phony lib/libgtest.a lib/libgtest_main.a
 
 # =============================================================================
 # Built-in targets
@@ -132,14 +710,14 @@ build all: phony ShopList
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/tommaso/CLionProjects/ShopList/CMakeLists.txt /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/tommaso/CLionProjects/ShopList/CMakeLists.txt /home/tommaso/CLionProjects/ShopList/test/CMakeLists.txt /home/tommaso/CLionProjects/ShopList/test/lib/googletest/CMakeLists.txt /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/CMakeLists.txt /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/cmake/gmock.pc.in /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/cmake/gmock_main.pc.in /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/CMakeLists.txt /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/cmake/Config.cmake.in /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/cmake/gtest.pc.in /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/cmake/gtest_main.pc.in /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/cmake/internal_utils.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDependentOption.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CheckIncludeFile.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CheckLibraryExists.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageMessage.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindThreads.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/GNUInstallDirs.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/tommaso/CLionProjects/ShopList/CMakeLists.txt /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake: phony
+build /home/tommaso/CLionProjects/ShopList/CMakeLists.txt /home/tommaso/CLionProjects/ShopList/test/CMakeLists.txt /home/tommaso/CLionProjects/ShopList/test/lib/googletest/CMakeLists.txt /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/CMakeLists.txt /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/cmake/gmock.pc.in /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googlemock/cmake/gmock_main.pc.in /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/CMakeLists.txt /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/cmake/Config.cmake.in /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/cmake/gtest.pc.in /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/cmake/gtest_main.pc.in /home/tommaso/CLionProjects/ShopList/test/lib/googletest/googletest/cmake/internal_utils.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDependentOption.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CheckIncludeFile.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/CheckLibraryExists.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-C.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU-CXX.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Compiler/GNU.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindPackageMessage.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindThreads.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/GNUInstallDirs.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-C.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU-CXX.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-GNU.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux-Initialize.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/Linux.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /home/tommaso/Scrivania/CLion-2023.3.2/clion-2023.3.2/bin/cmake/linux/x64/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake: phony
 
 
 #############################################

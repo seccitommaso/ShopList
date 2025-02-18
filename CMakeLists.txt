@@ -3,13 +3,17 @@ project(ShopList)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(ShopList main.cpp
-        User.cpp
-        User.h
-        Subject.h
+add_subdirectory(test)
+
+set(SOURCE_FILES
         Observer.h
-        ShoppingList.cpp
-        ShoppingList.h
-        Item.cpp
+        Subject.h
         Item.h
-        )
+        Item.cpp
+        ShoppingList.h
+        ShoppingList.cpp
+        User.h
+        User.cpp)
+add_executable(ShopList main.cpp)
+add_library(core ${SOURCE_FILES})
+target_link_libraries(ShopList core)

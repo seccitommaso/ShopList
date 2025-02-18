@@ -1,6 +1,3 @@
-//
-// Created by tommaso on 17/02/25.
-//
 
 #include "ShoppingList.h"
 #include <utility>
