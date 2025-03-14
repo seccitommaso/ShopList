@@ -1,6 +1,9 @@
 
 #include "Item.h"
 #include <utility>
+//imposta qty a zero se viene inserito un valore negativo
+Item::Item(std::string nome, std::string cat, int qty)
+    : name(std::move(nome)),category(std::move(cat)),quantity(qty < 0 ? 0: qty),purchased(false){}
 const std::string &Item::getName() const{
     return name;
 }
@@ -12,6 +15,15 @@ const std::string &Item::getCategory() const {
 int Item::getQuantity() const {
     return quantity;
 }
-//imposta qty a zero se viene inserito un valore negativo
-Item::Item(std::string nome, std::string cat, int qty)
-    : name(std::move(nome)),category(std::move(cat)),quantity(qty < 0 ? 0: qty){}
+
+bool Item::isPurchased() const {
+    return purchased;
+}
+
+void Item::markAsPurchased() {
+    purchased = true;
+}
+
+void Item::markAsNotPurchased() {
+    purchased = false;
+}

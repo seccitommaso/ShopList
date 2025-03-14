@@ -9,11 +9,15 @@ private:
     std::string name;
     std::string category;
     int quantity;
+    bool purchased;
 public:
+    Item(std::string nome,std::string cat,int qty);
     const std::string &getName() const;
     const std::string &getCategory() const;
     int getQuantity() const;
-    Item(std::string nome,std::string cat,int qty);
+    bool isPurchased() const;
+    void markAsPurchased();
+    void markAsNotPurchased();
 };
 
 #endif //SHOPLIST_ITEM_H
