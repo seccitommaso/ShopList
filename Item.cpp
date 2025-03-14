@@ -20,10 +20,6 @@ bool Item::isPurchased() const {
     return purchased;
 }
 
-void Item::markAsPurchased() {
-    purchased = true;
-}
-
-void Item::markAsNotPurchased() {
-    purchased = false;
+void Item::setPurchased(bool status) {
+    purchased = status;
 }

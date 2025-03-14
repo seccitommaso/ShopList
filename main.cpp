@@ -12,14 +12,14 @@ User* createUser(std::vector<User*>& users) {
     User* newUser = new User(userName);
     users.push_back(newUser);
 
-    std::cout << "✅ Utente \"" << userName << "\" creato con successo.\n";
+    std::cout << "Utente \"" << userName << "\" creato con successo.\n";
     return newUser;
 }
 
 // Funzione per selezionare un utente esistente
 User* selectUser(const std::vector<User*>& users) {
     if (users.empty()) {
-        std::cout << "⚠️ Nessun utente presente. Creane uno nuovo.\n";
+        std::cout << "Nessun utente presente. Creane uno nuovo.\n";
         return nullptr;
     }
 
@@ -33,32 +33,33 @@ User* selectUser(const std::vector<User*>& users) {
     std::cin >> choice;
 
     if (choice > 0 && choice <= static_cast<int>(users.size())) {
-        std::cout << "✅ Utente \"" << users[choice - 1]->getName() << "\" selezionato.\n";
+        std::cout << " Utente \"" << users[choice - 1]->getName() << "\" selezionato.\n";
         return users[choice - 1];
     }
 
-    std::cout << "❌ Scelta non valida.\n";
+    std::cout << "Scelta non valida.\n";
     return nullptr;
 }
 
 // Funzione per mostrare il menu della lista della spesa
 void showShoppingListMenu(User* user, const std::vector<User*>& users) {
     if (!user) {
-        std::cout << "⚠️ Nessun utente selezionato.\n";
+        std::cout << " Nessun utente selezionato.\n";
         return;
     }
 
     int choice;
     do {
-        std::cout << "\n--- 🛒 Menu Lista della Spesa di "<<user->getName()<<"---\n"
-                  << "1️⃣  Crea una nuova lista\n"
-                  << "2️⃣  Visualizza tutte le liste\n"
-                  << "3️⃣  Aggiungi un oggetto a una lista\n"
-                  << "4️⃣  Rimuovi un oggetto da una lista\n"
-                  << "5️⃣  Elimina una lista\n"
-                  << "6️⃣  Condividi una lista\n"
-                  << "7️⃣  Torna al menu principale\n"
-                  << "🔹 Scegli un'opzione: ";
+        std::cout << "\n--- Menu Lista della Spesa di "<<user->getName()<<"---\n"
+                  << "1  Crea una nuova lista\n"
+                  << "2  Visualizza tutte le liste\n"
+                  << "3  Aggiungi un oggetto a una lista\n"
+                  << "4  Rimuovi un oggetto da una lista\n"
+                  << "5. Marca un oggetto come acquistato\n"
+                  << "6. Elimina una lista\n"
+                  << "7. Condividi una lista\n"
+                  << "8. Torna al menu principale\n"
+                  << "- Scegli un'opzione: ";
         std::cin >> choice;
         std::cin.ignore();
 
@@ -82,7 +83,7 @@ void showShoppingListMenu(User* user, const std::vector<User*>& users) {
                 std::getline(std::cin, itemName);
                 std::cout << "Categoria: ";
                 std::getline(std::cin, category);
-                std::cout << "Quantità: ";
+                std::cout << "Quantita: ";
                 std::cin >> quantity;
                 std::cin.ignore();
 
@@ -99,13 +100,22 @@ void showShoppingListMenu(User* user, const std::vector<User*>& users) {
                 break;
             }
             case 5: {
+                std::string listName, itemName;
+                std::cout << "Nome della lista: ";
+                std::getline(std::cin, listName);
+                std::cout << "Nome dell'oggetto da marcare/smarcare: ";
+                std::getline(std::cin, itemName);
+                user->markItemAsPurchasedInList(listName, itemName);
+                break;
+            }
+            case 6: {
                 std::string listName;
                 std::cout << "Nome della lista da eliminare: ";
                 std::getline(std::cin, listName);
                 user->removeShoppingList(listName);
                 break;
             }
-            case 6: {
+            case 7: {
                 std::string listName;
                 std::cout << "Nome della lista da condividere: ";
                 std::getline(std::cin, listName);
@@ -114,15 +124,15 @@ void showShoppingListMenu(User* user, const std::vector<User*>& users) {
                 if (otherUser && otherUser != user) {
                     user->shareShoppingList(otherUser, listName);
                 } else {
-                    std::cout << "⚠️ Non puoi condividere la lista con te stesso o l'utente non esiste.\n";
+                    std::cout << " Non puoi condividere la lista con te stesso o l'utente non esiste.\n";
                 }
                 break;
             }
-            case 7:
-                std::cout << "🔙 Tornando al menu principale...\n";
+            case 8:
+                std::cout << " Tornando al menu principale...\n";
                 break;
             default:
-                std::cout << "❌ Opzione non valida. Riprova.\n";
+                std::cout << " Opzione non valida. Riprova.\n";
         }
     } while (choice != 7);
 }
@@ -134,12 +144,12 @@ int main() {
     int choice;
 
     do {
-        std::cout << "\n=== 🛍️ Gestione Liste della Spesa ===\n"
-                  << "1️⃣  Crea un nuovo utente\n"
-                  << "2️⃣  Seleziona un utente\n"
-                  << "3️⃣  Accedi al menu della lista della spesa\n"
-                  << "4️⃣  Esci\n"
-                  << "🔹 Scegli un'opzione: ";
+        std::cout << "\n===  Gestione Liste della Spesa ===\n"
+                  << "1 crea un nuovo utente\n"
+                  << "2 Seleziona un utente\n"
+                  << "3 Accedi al menu della lista della spesa\n"
+                  << "4 Esci\n"
+                  << "- Scegli un'opzione: ";
         std::cin >> choice;
 
         switch (choice) {
@@ -153,10 +163,10 @@ int main() {
                 showShoppingListMenu(currentUser, users);
                 break;
             case 4:
-                std::cout << "👋 Uscita dal programma...\n";
+                std::cout << " Uscita dal programma...\n";
                 break;
             default:
-                std::cout << "❌ Opzione non valida. Riprova.\n";
+                std::cout << " Opzione non valida. Riprova.\n";
         }
     } while (choice != 4);
 

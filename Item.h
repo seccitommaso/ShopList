@@ -16,8 +16,7 @@ public:
     const std::string &getCategory() const;
     int getQuantity() const;
     bool isPurchased() const;
-    void markAsPurchased();
-    void markAsNotPurchased();
+    void setPurchased(bool status);
 };
 
 #endif //SHOPLIST_ITEM_H

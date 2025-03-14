@@ -17,6 +17,20 @@ void ShoppingList::notify(const std::string& nameList) {
         observer->update(nameList);
     }
 }
+bool ShoppingList::markItemAsPurchased(const std::string &itemName) {
+    for (auto& item : items) {
+        if (item.getName() == itemName) {
+            if (!item.isPurchased()) {
+                item.setPurchased(true);
+                notify(listName);
+                return true;//successo
+            }
+            return false;//già acquistato
+        }
+    }
+    return false;//non trovato
+}
+
 
 void ShoppingList::addItem(const Item &item) {
     items.push_back(item);

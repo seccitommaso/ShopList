@@ -19,6 +19,7 @@ public:
     void addItemToShoppingList(const std::string& listName, const std::string& itemName, const std::string& category, int quantity);
     void removeItemFromShoppingList(const std::string& listName, const std::string& itemName);
     void viewShoppingList(const std::string& listName);
+    void markItemAsPurchasedInList(const std::string &listName, const std::string &itemName);
     void shareShoppingList(User* otherUser, const std::string& listName);
     void update(const std::string& listName)override;
     void viewAllShoppingLists();

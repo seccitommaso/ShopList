@@ -64,16 +64,34 @@ void User::removeItemFromShoppingList(const std::string &listName, const std::st
 
 void User::viewShoppingList(const std::string& listName) {
     auto list= getShoppingListByName(listName);
+
     if(list!= nullptr){
         const std::list<Item>& items = list->getItems();
         std::cout << "Lista della spesa " << list->getListName() << " di " << name << ":"<<std::endl;
         for (const auto& item : items) {
-            std::cout << "- " << item.getName() << " (" << item.getCategory() << "), Quantità: " << item.getQuantity() <<std::endl;
-        }
+            std::string status = item.isPurchased() ? "Acquistato" : "Da acquistare";
+            std::cout << "- " << item.getName()
+                      << " (" << item.getCategory() << "), Quantita: " << item.getQuantity()
+                      << " --> " << status << "\n";        }
     } else {
         std::cout<<"Lista "<<listName<<" non trovata"<<std::endl;
     }
 }
+void User::markItemAsPurchasedInList(const std::string& listName, const std::string& itemName) {
+    auto list = getShoppingListByName(listName);
+    if (!list) {
+        std::cout << "Lista \"" << listName << "\" non trovata.\n";
+        return;
+    }
+
+    bool result = list->markItemAsPurchased(itemName);
+    if (result) {
+        std::cout << "Oggetto \"" << itemName << "\" segnato come acquistato.\n";
+    } else {
+        std::cout << "Oggetto \"" << itemName << "\" non trovato o già acquistato.\n";
+    }
+}
+
 void User::shareShoppingList(User* otherUser, const std::string& listName) {
     auto list = getShoppingListByName(listName);
     if (list != nullptr) {
