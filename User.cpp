@@ -48,12 +48,17 @@ void User::addItemToShoppingList(const std::string &listName, const std::string 
 }
 
 void User::removeItemFromShoppingList(const std::string &listName, const std::string &itemName) {
-    auto list= getShoppingListByName(listName);
-    if(list!= nullptr) {
-        list->removeItem(itemName);
-        std::cout << "Oggetto \"" << itemName << "\" rimosso dalla lista \"" << listName << "\"."<<std::endl;
+    auto list = getShoppingListByName(listName);  // Trova la lista
+    if (list != nullptr) {  // Verifica se la lista esiste
+        bool itemRemoved = list->removeItem(itemName);  // Rimuove l'oggetto dalla lista
+
+        if (itemRemoved) {
+            std::cout << "Oggetto \"" << itemName << "\" rimosso dalla lista \"" << listName << "\"." << std::endl;
+        } else {
+            std::cout << "Oggetto \"" << itemName << "\" non trovato nella lista \"" << listName << "\"." << std::endl;
+        }
     } else {
-        std::cout<<"Lista "<<listName<<" non trovata"<<std::endl;
+        std::cout << "Lista \"" << listName << "\" non trovata." << std::endl;
     }
 }
 

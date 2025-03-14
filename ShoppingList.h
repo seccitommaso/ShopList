@@ -19,7 +19,7 @@ public:
     void unsubscribe(Observer *o)override;
     void notify(const std::string& nameList)override;
     void addItem(const Item& item);
-    void removeItem(const std::string& itemName);
+    bool removeItem(const std::string& itemName);
     [[nodiscard]] const std::list<Item>& getItems() const;
     [[nodiscard]] const std::string &getListName() const;
 };

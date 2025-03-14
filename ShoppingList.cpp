@@ -23,18 +23,15 @@ void ShoppingList::addItem(const Item &item) {
     notify(listName);
 }
 
-void ShoppingList::removeItem(const std::string &itemName) {
-    bool itemFound=false;
+bool ShoppingList::removeItem(const std::string &itemName) {
     for (auto it = items.begin(); it != items.end();it++ ) {
         if (it->getName() == itemName) {
             it = items.erase(it);
-            itemFound=true;
             notify(listName);
+            return true;
         }
     }
-    if(!itemFound){
-        std::cout<<"Item "<<itemName<<" non trovato"<<std::endl;
-    }
+   return false;
 }
 
 const std::list<Item> &ShoppingList::getItems() const{
