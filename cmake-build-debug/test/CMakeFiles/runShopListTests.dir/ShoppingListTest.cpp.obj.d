@@ -285,4 +285,6 @@ test/CMakeFiles/runShopListTests.dir/ShoppingListTest.cpp.obj: \
  C:/Users/claud/CLionProjects/ShopList/Observer.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/list \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_list.h \
- C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/list.tcc
+ C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/list.tcc \
+ C:/Users/claud/CLionProjects/ShopList/User.h \
+ C:/Users/claud/CLionProjects/ShopList/ShoppingList.h

@@ -502,6 +502,7 @@ test/CMakeFiles/runShopListTests.dir/ShoppingListTest.cpp.obj: C:/Users/claud/CL
   C:/Users/claud/CLionProjects/ShopList/Observer.h \
   C:/Users/claud/CLionProjects/ShopList/ShoppingList.h \
   C:/Users/claud/CLionProjects/ShopList/Subject.h \
+  C:/Users/claud/CLionProjects/ShopList/User.h \
   C:/Users/claud/CLionProjects/ShopList/test/lib/googletest/googlemock/include/gmock/gmock-actions.h \
   C:/Users/claud/CLionProjects/ShopList/test/lib/googletest/googlemock/include/gmock/gmock-cardinalities.h \
   C:/Users/claud/CLionProjects/ShopList/test/lib/googletest/googlemock/include/gmock/gmock-function-mocker.h \

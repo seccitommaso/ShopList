@@ -2,7 +2,6 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include "../ShoppingList.h"
-
 class MockObserver : public Observer {
 public:
     MOCK_METHOD(void, update, (const std::string&), (override));

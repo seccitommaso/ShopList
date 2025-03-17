@@ -153,3 +153,78 @@ TEST(UserTest, ShareShoppingListWithSameUser) {
 }
 
 
+TEST(UserTest, MarkItemAsPurchasedInListAndCountRemainingItems) {
+    User user("Mario");
+    std::string listName = "Spesa Settimanale";
+
+    // Crea la lista
+    user.createShoppingList(listName);
+
+    // Aggiunge 3 item
+    user.addItemToShoppingList(listName, "Latte", "Bevande", 2);
+    user.addItemToShoppingList(listName, "Pane", "Panetteria", 1);
+    user.addItemToShoppingList(listName, "Mele", "Frutta", 5);
+
+    // Marca "Latte" come acquistato
+    user.markItemAsPurchasedInList(listName, "Latte");
+
+    // Ottiene la lista
+    auto list = user.getShoppingListByName(listName);
+
+    // Conta quanti item non sono ancora acquistati
+    int remainingItems = 0;
+    for (const auto& item : list->getItems()) {
+        if (!item.isPurchased()) {
+            remainingItems++;
+        }
+    }
+
+    // Controlla che il Latte sia marcato come acquistato
+    for (const auto& item : list->getItems()) {
+        if (item.getName() == "Latte") {
+            EXPECT_TRUE(item.isPurchased());
+        }
+    }
+
+    // Aspettativa: rimangono 2 item da acquistare
+    EXPECT_EQ(remainingItems, 2);
+}
+TEST(UserTest, MarkAlreadyPurchasedItem) {
+    User user("Anna");
+    user.createShoppingList("Festa");
+    user.addItemToShoppingList("Festa", "Torta", "Dolci", 1);
+
+    // Primo acquisto
+    user.markItemAsPurchasedInList("Festa", "Torta");
+
+    // Secondo tentativo
+    auto list = user.getShoppingListByName("Festa");
+    bool secondMarkResult = list->markItemAsPurchased("Torta");
+
+    EXPECT_FALSE(secondMarkResult);
+
+    // La torta è ancora acquistata (true)
+    for (const auto& item : list->getItems()) {
+        if (item.getName() == "Torta") {
+            EXPECT_TRUE(item.isPurchased());
+        }
+    }
+}
+
+TEST(UserTest, MarkNonExistentItem) {
+    User user("Luca");
+    user.createShoppingList("Picnic");
+    user.addItemToShoppingList("Picnic", "Panini", "Cibo", 3);
+
+    // Provi a marcare un item che non c'è
+    auto list = user.getShoppingListByName("Picnic");
+    bool result = list->markItemAsPurchased("Succhi");
+
+    EXPECT_FALSE(result);
+
+    // Panini non deve essere marcato come acquistato
+    for (const auto& item : list->getItems()) {
+        EXPECT_FALSE(item.isPurchased());
+    }
+}
+
