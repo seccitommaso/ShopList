@@ -134,7 +134,7 @@ void showShoppingListMenu(User* user, const std::vector<User*>& users) {
             default:
                 std::cout << " Opzione non valida. Riprova.\n";
         }
-    } while (choice != 7);
+    } while (choice != 8);
 }
 
 // Funzione principale con menu generale
