@@ -47,3 +47,36 @@ TEST(ShoppingListTest, ObserverNotificationTest) {
     Item item("Mela", "Frutta", 3);
     list.addItem(item);
 }
+// Test per countItemsToBuy
+TEST(ShoppingListTest, TestCountItemsToBuy) {
+    ShoppingList list("Spesa");
+    list.addItem(Item("item1", "category1", 2));  // Aggiungi un oggetto non acquistato
+    list.addItem(Item("item2", "category2", 1));  // Aggiungi un oggetto non acquistato
+    list.addItem(Item("item3", "category3", 3));  // Aggiungi un oggetto acquistato
+
+    list.markItemAsPurchased("item3");
+
+    EXPECT_EQ(list.countItemsToBuy(), 2);
+}
+
+// Test per countTotalItems
+TEST(ShoppingListTest, TestCountTotalItems) {
+    ShoppingList list("Spesa");
+    list.addItem(Item("item1", "category1", 2));
+    list.addItem(Item("item2", "category2", 1));
+    list.addItem(Item("item3", "category3", 3));
+
+    EXPECT_EQ(list.countTotalItems(), 3);
+}
+
+// Test per countItemsToBuy quando la lista è vuota
+TEST(ShoppingListTest, TestCountItemsToBuyEmpty) {
+    ShoppingList list("Spesa");
+    EXPECT_EQ(list.countItemsToBuy(), 0);
+}
+
+// Test per countTotalItems quando la lista è vuota
+TEST(ShoppingListTest, TestCountTotalItemsEmpty) {
+    ShoppingList list("Spesa");
+    EXPECT_EQ(list.countTotalItems(), 0);
+}
