@@ -31,6 +31,19 @@ bool ShoppingList::markItemAsPurchased(const std::string &itemName) {
     return false;//non trovato
 }
 
+int ShoppingList::countItemsToBuy() const {
+    int count = 0;
+    for (const auto& item : items) {
+        if (!item.isPurchased()) {
+            count++;
+        }
+    }
+    return count;
+}
+
+int ShoppingList::countTotalItems() const {
+    return items.size();
+}
 
 void ShoppingList::addItem(const Item &item) {
     items.push_back(item);

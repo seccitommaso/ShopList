@@ -19,6 +19,8 @@ public:
     void unsubscribe(Observer *o)override;
     void notify(const std::string& nameList)override;
     bool markItemAsPurchased(const std::string& itemName);
+    [[nodiscard]] int countItemsToBuy() const;
+    [[nodiscard]] int countTotalItems() const;
     void addItem(const Item& item);
     bool removeItem(const std::string& itemName);
     [[nodiscard]] const std::list<Item>& getItems() const;
