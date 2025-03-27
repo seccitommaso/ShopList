@@ -56,9 +56,10 @@ void showShoppingListMenu(User* user, const std::vector<User*>& users) {
                   << "3  Aggiungi un oggetto a una lista\n"
                   << "4  Rimuovi un oggetto da una lista\n"
                   << "5. Marca un oggetto come acquistato\n"
-                  << "6. Elimina una lista\n"
-                  << "7. Condividi una lista\n"
-                  << "8. Torna al menu principale\n"
+                  << "6  Mostra oggetti ancora da comprare\n"
+                  << "7  Elimina una lista\n"
+                  << "8  Condividi una lista\n"
+                  << "9  Torna al menu principale\n"
                   << "- Scegli un'opzione: ";
         std::cin >> choice;
         std::cin.ignore();
@@ -105,17 +106,24 @@ void showShoppingListMenu(User* user, const std::vector<User*>& users) {
                 std::getline(std::cin, listName);
                 std::cout << "Nome dell'oggetto da marcare/smarcare: ";
                 std::getline(std::cin, itemName);
-                user->markItemAsPurchasedInList(listName, itemName);
+                user->markItemAsPurchased(listName, itemName);
                 break;
             }
             case 6: {
+                std::string listName;
+                std::cout << "Nome della lista: ";
+                std::getline(std::cin, listName);
+                user->viewItemsToBuy(listName);  //
+                break;
+            }
+            case 7: {
                 std::string listName;
                 std::cout << "Nome della lista da eliminare: ";
                 std::getline(std::cin, listName);
                 user->removeShoppingList(listName);
                 break;
             }
-            case 7: {
+            case 8: {
                 std::string listName;
                 std::cout << "Nome della lista da condividere: ";
                 std::getline(std::cin, listName);
@@ -128,13 +136,13 @@ void showShoppingListMenu(User* user, const std::vector<User*>& users) {
                 }
                 break;
             }
-            case 8:
+            case 9:
                 std::cout << " Tornando al menu principale...\n";
                 break;
             default:
                 std::cout << " Opzione non valida. Riprova.\n";
         }
-    } while (choice != 8);
+    } while (choice != 9);
 }
 
 // Funzione principale con menu generale

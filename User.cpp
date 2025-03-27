@@ -77,7 +77,31 @@ void User::viewShoppingList(const std::string& listName) {
         std::cout<<"Lista "<<listName<<" non trovata"<<std::endl;
     }
 }
-void User::markItemAsPurchasedInList(const std::string& listName, const std::string& itemName) {
+void User::viewItemsToBuy(const std::string& listName) {
+    auto list = getShoppingListByName(listName);
+
+    if (!list) {
+        std::cout << "Lista \"" << listName << "\" non trovata." << std::endl;
+        return;
+    }
+
+    std::cout << "Oggetti da comprare nella lista \"" << list->getListName() << "\":" << std::endl;
+
+    bool hasItemsToBuy = false;
+    for (const auto& item : list->getItems()) {
+        if (!item.isPurchased()) {
+            std::cout << "- " << item.getName() << " (" << item.getCategory()
+                      << "), Quantità: " << item.getQuantity() << std::endl;
+            hasItemsToBuy = true;
+        }
+    }
+
+    if (!hasItemsToBuy) {
+        std::cout << "Tutti gli oggetti sono stati acquistati!" << std::endl;
+    }
+}
+
+void User::markItemAsPurchased(const std::string& listName, const std::string& itemName) {
     auto list = getShoppingListByName(listName);
     if (!list) {
         std::cout << "Lista \"" << listName << "\" non trovata.\n";
@@ -115,6 +139,7 @@ void User::viewAllShoppingLists() {
 User::~User()  {
     for(auto list : shoppingLists){
         list->unsubscribe(this);
+        delete list;
     }
 }
 
