@@ -153,7 +153,7 @@ TEST(UserTest, ShareShoppingListWithSameUser) {
 }
 
 
-TEST(UserTest, MarkItemAsPurchasedInListAndCountRemainingItems) {
+TEST(UserTest, MarkItemAsPurchasedInListAndCountRemainingItems) {//cambia nome
     User user("Mario");
     std::string listName = "Spesa Settimanale";
 
@@ -166,7 +166,7 @@ TEST(UserTest, MarkItemAsPurchasedInListAndCountRemainingItems) {
     user.addItemToShoppingList(listName, "Mele", "Frutta", 5);
 
     // Marca "Latte" come acquistato
-    user.markItemAsPurchasedInList(listName, "Latte");
+    user.markItemAsPurchased(listName, "Latte");
 
     // Ottiene la lista
     auto list = user.getShoppingListByName(listName);
@@ -195,7 +195,7 @@ TEST(UserTest, MarkAlreadyPurchasedItem) {
     user.addItemToShoppingList("Festa", "Torta", "Dolci", 1);
 
     // Primo acquisto
-    user.markItemAsPurchasedInList("Festa", "Torta");
+    user.markItemAsPurchased("Festa", "Torta");
 
     // Secondo tentativo
     auto list = user.getShoppingListByName("Festa");
