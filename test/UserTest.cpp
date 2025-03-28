@@ -153,7 +153,7 @@ TEST(UserTest, ShareShoppingListWithSameUser) {
 }
 
 
-TEST(UserTest, MarkItemAsPurchasedInListAndCountRemainingItems) {//cambia nome
+TEST(UserTest, MarkItemAsPurchasedInListAndCountRemainingItems) {//cambia nome?
     User user("Mario");
     std::string listName = "Spesa Settimanale";
 
