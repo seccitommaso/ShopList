@@ -85,6 +85,11 @@ void User::viewItemsToBuy(const std::string& listName) {
         return;
     }
 
+    // Stampa il numero di oggetti ancora da comprare
+    int itemsToBuy = list->countItemsToBuy();
+    std::cout << "Numero di oggetti ancora da comprare nella lista \""
+              << list->getListName() << "\": " << itemsToBuy << std::endl;
+
     std::cout << "Oggetti da comprare nella lista \"" << list->getListName() << "\":" << std::endl;
 
     bool hasItemsToBuy = false;
