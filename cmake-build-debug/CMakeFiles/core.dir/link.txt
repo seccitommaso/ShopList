@@ -1,2 +1,0 @@
-C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\ar.exe qc libcore.a CMakeFiles/core.dir/Item.cpp.obj CMakeFiles/core.dir/ShoppingList.cpp.obj CMakeFiles/core.dir/User.cpp.obj
-C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\ranlib.exe libcore.a
