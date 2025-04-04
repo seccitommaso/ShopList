@@ -63,20 +63,24 @@ void User::removeItemFromShoppingList(const std::string &listName, const std::st
 }
 
 void User::viewShoppingList(const std::string& listName) {
-    auto list= getShoppingListByName(listName);
+    auto list = getShoppingListByName(listName);
+    if (list != nullptr) {
+        std::cout << "Lista della spesa " << list->getListName() << " di " << name << ":" << std::endl;
 
-    if(list!= nullptr){
-        const std::list<Item>& items = list->getItems();
-        std::cout << "Lista della spesa " << list->getListName() << " di " << name << ":"<<std::endl;
-        for (const auto& item : items) {
-            std::string status = item.isPurchased() ? "Acquistato" : "Da acquistare";
-            std::cout << "- " << item.getName()
-                      << " (" << item.getCategory() << "), Quantita: " << item.getQuantity()
-                      << " --> " << status << "\n";        }
+        for (size_t i = 0; i < list->countTotalItems(); ++i) {
+            try {
+                const auto& item = list->getItemAt(i);
+                std::string status = item.isPurchased() ? "Acquistato" : "Da acquistare";
+                std::cout << "- " << item.getName() << " (" << item.getCategory() << "), Quantità: " << item.getQuantity() << " --> " << status << "\n";
+            } catch (const std::out_of_range&) {
+                std::cout << "Errore: indice fuori dai limiti.\n";
+            }
+        }
     } else {
-        std::cout<<"Lista "<<listName<<" non trovata"<<std::endl;
+        std::cout << "Lista " << listName << " non trovata" << std::endl;
     }
 }
+
 void User::viewItemsToBuy(const std::string& listName) {
     auto list = getShoppingListByName(listName);
 
@@ -93,7 +97,8 @@ void User::viewItemsToBuy(const std::string& listName) {
     std::cout << "Oggetti da comprare nella lista \"" << list->getListName() << "\":" << std::endl;
 
     bool hasItemsToBuy = false;
-    for (const auto& item : list->getItems()) {
+    for (size_t i = 0; i < list->countTotalItems(); ++i) {
+        const auto& item = list->getItemAt(i);
         if (!item.isPurchased()) {
             std::cout << "- " << item.getName() << " (" << item.getCategory()
                       << "), Quantità: " << item.getQuantity() << std::endl;

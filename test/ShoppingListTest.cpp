@@ -17,7 +17,11 @@ TEST(ShoppingListTest, AddItemTest) {
     Item item("Mela", "Frutta", 3);
     list.addItem(item);
     EXPECT_EQ(list.countTotalItems(), 1);
-    EXPECT_EQ(list.getItems().front().getName(), "Mela");
+    // Verifica che il primo oggetto (alla posizione 0) sia "Mela"
+    const Item& addedItem = list.getItemAt(0);
+    EXPECT_EQ(addedItem.getName(), "Mela");
+    EXPECT_EQ(addedItem.getCategory(), "Frutta");
+    EXPECT_EQ(addedItem.getQuantity(), 3);
 }
 //test per rimozione di un item
 TEST(ShoppingListTest, RemoveItemTest) {
