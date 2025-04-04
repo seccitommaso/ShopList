@@ -75,3 +75,13 @@ const Item& ShoppingList::getItemAt(size_t index) const {
     }
     throw std::out_of_range("Index out of range");
 }
+// Nuovo metodo per ottenere lista di oggetti da acquistare
+std::vector<Item> ShoppingList::getItemsToBuy() const {
+    std::vector<Item> itemsToBuy;
+    for (const auto& item : items) {
+        if (!item.isPurchased()) {
+            itemsToBuy.push_back(item);
+        }
+    }
+    return itemsToBuy;
+}
