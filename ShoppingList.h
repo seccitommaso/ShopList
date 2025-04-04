@@ -22,7 +22,7 @@ public:
     bool markItemAsPurchased(const std::string& itemName);
     [[nodiscard]] int countItemsToBuy() const;
     [[nodiscard]] int countTotalItems() const;
-    //lista oggetti da comprare
+    const Item& getItemAt(size_t index) const;//metodo per prendere l'elemento alla posizione i-esima
     void addItem(const Item& item);
     bool removeItem(const std::string& itemName);
     [[nodiscard]] const std::string &getListName() const;

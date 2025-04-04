@@ -67,3 +67,11 @@ bool ShoppingList::removeItem(const std::string &itemName) {
 const std::string &ShoppingList::getListName() const {
     return listName;
 }
+
+// Nuovo metodo per ottenere un elemento tramite indice
+const Item& ShoppingList::getItemAt(size_t index) const {
+    if (index < items.size()) {
+        return items[index];
+    }
+    throw std::out_of_range("Index out of range");
+}

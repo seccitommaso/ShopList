@@ -76,3 +76,24 @@ TEST(ShoppingListTest, TestCountTotalItemsEmpty) {
     ShoppingList list("Spesa");
     EXPECT_EQ(list.countTotalItems(), 0);
 }
+// Test per getItemAt
+TEST(ShoppingListTest, GetItemAtTest) {
+    // Crea una ShoppingList con alcuni elementi
+    ShoppingList list("Spesa");
+    Item apple("Mela", "Frutta", 3);
+    Item banana("Banana", "Frutta", 5);
+    Item bread("Pane", "Panetteria", 2);
+
+    list.addItem(apple);
+    list.addItem(banana);
+    list.addItem(bread);
+
+    // Test per ottenere un elemento alla posizione corretta
+    const Item& item1 = list.getItemAt(0);  // Prende il primo elemento
+    EXPECT_EQ(item1.getName(), "Mela");
+    EXPECT_EQ(item1.getCategory(), "Frutta");
+    EXPECT_EQ(item1.getQuantity(), 3);
+
+    // Test per un indice fuori dai limiti (dovrebbe lanciare una std::out_of_range)
+    EXPECT_THROW(list.getItemAt(3), std::out_of_range);
+}
