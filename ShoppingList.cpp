@@ -1,5 +1,6 @@
 
 #include "ShoppingList.h"
+#include <algorithm>
 #include <utility>
 
 ShoppingList::ShoppingList(std::string name):listName(std::move(name)) {}
@@ -13,7 +14,7 @@ void ShoppingList::unsubscribe(Observer *o) {
 }
 
 void ShoppingList::notify(const std::string& nameList) {
-    for(auto & observer : observers){
+    for(auto& observer : observers){
         observer->update(nameList);
     }
 }
@@ -51,19 +52,17 @@ void ShoppingList::addItem(const Item &item) {
 }
 
 bool ShoppingList::removeItem(const std::string &itemName) {
-    for (auto it = items.begin(); it != items.end();it++ ) {
-        if (it->getName() == itemName) {
-            it = items.erase(it);
-            notify(listName);
-            return true;
-        }
+    auto it = std::remove_if(items.begin(), items.end(), [&itemName](const Item& item) {
+        return item.getName() == itemName;
+    });
+    if (it != items.end()) {
+        items.erase(it, items.end());
+        notify(listName);
+        return true;
     }
-   return false;
+    return false;
 }
 
-const std::list<Item> &ShoppingList::getItems() const{
-    return items;
-}
 
 const std::string &ShoppingList::getListName() const {
     return listName;

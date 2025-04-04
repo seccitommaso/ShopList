@@ -6,12 +6,13 @@
 #include "Item.h"
 #include "Subject.h"
 #include <list>
+#include <vector>
 // Classe che rappresenta una lista della spesa (ConcreteSubject)
 class ShoppingList : public Subject{
 private:
     std::list<Observer*> observers;
     std::string listName;
-    std::list<Item>items;
+    std::vector<Item>items;
 
 public:
     explicit ShoppingList(std::string name);
@@ -21,9 +22,9 @@ public:
     bool markItemAsPurchased(const std::string& itemName);
     [[nodiscard]] int countItemsToBuy() const;
     [[nodiscard]] int countTotalItems() const;
+    //lista oggetti da comprare
     void addItem(const Item& item);
     bool removeItem(const std::string& itemName);
-    [[nodiscard]] const std::list<Item>& getItems() const;
     [[nodiscard]] const std::string &getListName() const;
 };
 

@@ -16,7 +16,7 @@ TEST(ShoppingListTest, AddItemTest) {
     ShoppingList list("Spesa");
     Item item("Mela", "Frutta", 3);
     list.addItem(item);
-    EXPECT_EQ(list.getItems().size(), 1);
+    EXPECT_EQ(list.countTotalItems(), 1);
     EXPECT_EQ(list.getItems().front().getName(), "Mela");
 }
 //test per rimozione di un item
@@ -25,15 +25,13 @@ TEST(ShoppingListTest, RemoveItemTest) {
     Item item("Mela", "Frutta", 3);
     list.addItem(item);
     list.removeItem("Mela");
-    EXPECT_TRUE(list.getItems().empty());
+    EXPECT_EQ(list.countTotalItems(), 0);
 }
 // Test per la rimozione di un item non presente
 TEST(ShoppingListTest, RemoveNonExistentItemTest) {
     ShoppingList list("Spesa");
-
     // Rimuovi un oggetto che non esiste
     bool result = list.removeItem("Banana");
-
     // Verifica che l'oggetto non sia stato trovato e che la rimozione sia fallita
     EXPECT_FALSE(result);
 }
@@ -50,12 +48,10 @@ TEST(ShoppingListTest, ObserverNotificationTest) {
 // Test per countItemsToBuy
 TEST(ShoppingListTest, TestCountItemsToBuy) {
     ShoppingList list("Spesa");
-    list.addItem(Item("item1", "category1", 2));  // Aggiungi un oggetto non acquistato
-    list.addItem(Item("item2", "category2", 1));  // Aggiungi un oggetto non acquistato
-    list.addItem(Item("item3", "category3", 3));  // Aggiungi un oggetto acquistato
-
-    list.markItemAsPurchased("item3");
-
+    list.addItem(Item("item1", "category1", 2));
+    list.addItem(Item("item2", "category2", 1));
+    list.addItem(Item("item3", "category3", 3));
+    list.markItemAsPurchased("item3");//marca item3 come acquistato
     EXPECT_EQ(list.countItemsToBuy(), 2);
 }
 
