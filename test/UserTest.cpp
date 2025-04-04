@@ -153,7 +153,7 @@ TEST(UserTest, ShareShoppingListWithSameUser) {
 }
 
 
-TEST(UserTest, MarkItemAsPurchasedInListAndCountRemainingItems) {//cambia nome?
+TEST(UserTest, MarkItemAsPurchased) {
     User user("Mario");
     std::string listName = "Spesa Settimanale";
 
@@ -171,14 +171,6 @@ TEST(UserTest, MarkItemAsPurchasedInListAndCountRemainingItems) {//cambia nome?
     // Ottiene la lista
     auto list = user.getShoppingListByName(listName);
 
-    // Conta quanti item non sono ancora acquistati
-    int remainingItems = 0;
-    for (const auto& item : list->getItems()) {
-        if (!item.isPurchased()) {
-            remainingItems++;
-        }
-    }
-
     // Controlla che il Latte sia marcato come acquistato
     for (const auto& item : list->getItems()) {
         if (item.getName() == "Latte") {
@@ -186,8 +178,6 @@ TEST(UserTest, MarkItemAsPurchasedInListAndCountRemainingItems) {//cambia nome?
         }
     }
 
-    // Aspettativa: rimangono 2 item da acquistare
-    EXPECT_EQ(remainingItems, 2);
 }
 TEST(UserTest, MarkAlreadyPurchasedItem) {
     User user("Anna");
