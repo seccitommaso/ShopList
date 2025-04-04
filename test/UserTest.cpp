@@ -48,11 +48,11 @@ TEST(UserTest, AddItemToShoppingList) {
     ShoppingList* list = user.getShoppingListByName("Spesa");
 
     ASSERT_NE(list, nullptr);
-    auto items = list->getItems();
-    ASSERT_EQ(items.size(), 1);
-    EXPECT_EQ(items.front().getName(), "Mela");
-    EXPECT_EQ(items.front().getCategory(), "Frutta");
-    EXPECT_EQ(items.front().getQuantity(), 3);
+    ASSERT_EQ(list->countTotalItems(), 1);
+    const auto& item = list->getItemAt(0); // Usato getItemAt invece di getItems()
+    EXPECT_EQ(item.getName(), "Mela");
+    EXPECT_EQ(item.getCategory(), "Frutta");
+    EXPECT_EQ(item.getQuantity(), 3);
 }
 
 // Test per la rimozione di un elemento da una lista
@@ -65,7 +65,7 @@ TEST(UserTest, RemoveItemFromShoppingList) {
 
     ShoppingList* list = user.getShoppingListByName("Spesa");
     ASSERT_NE(list, nullptr);
-    EXPECT_EQ(list->getItems().size(), 0);
+    EXPECT_EQ(list->countTotalItems(), 0);
 }
 
 // Test di rimozione oggetti non esistenti
@@ -79,7 +79,7 @@ TEST(UserTest, RemoveNonExistentItem) {
     // Verifica che non si verifichi errore o crash
     auto list = user.getShoppingListByName("Lista1");
     ASSERT_NE(list, nullptr);
-    EXPECT_EQ(list->getItems().size(), 0);  // Nessun oggetto nella lista
+    EXPECT_EQ(list->countTotalItems(), 0);
 }
 
 // Test per la condivisione di una lista con un altro utente
@@ -109,7 +109,7 @@ TEST(UserTest, EdgeCaseInput) {
     // Verifica che la quantità grande non causi errori
     auto list = user.getShoppingListByName("Lista1");
     ASSERT_NE(list, nullptr);
-    EXPECT_EQ(list->getItems().size(), 2); // Dovrebbero esserci due oggetti (se la quantità negativa è gestita)
+    EXPECT_EQ(list->countTotalItems(), 2);
 }
 
 // Test di aggiornamento della lista
@@ -152,7 +152,7 @@ TEST(UserTest, ShareShoppingListWithSameUser) {
     EXPECT_TRUE(output.find("L'utente Alice ha ricevuto un aggiornamento della lista \"Lista1\".") != std::string::npos);
 }
 
-
+// Test di acquisto di un elemento
 TEST(UserTest, MarkItemAsPurchased) {
     User user("Mario");
     std::string listName = "Spesa Settimanale";
@@ -172,13 +172,14 @@ TEST(UserTest, MarkItemAsPurchased) {
     auto list = user.getShoppingListByName(listName);
 
     // Controlla che il Latte sia marcato come acquistato
-    for (const auto& item : list->getItems()) {
+    for (int i = 0; i < list->countTotalItems(); ++i) {
+        const auto& item = list->getItemAt(i);
         if (item.getName() == "Latte") {
             EXPECT_TRUE(item.isPurchased());
         }
     }
-
 }
+// Test di acquisto di un elemento già acquistato
 TEST(UserTest, MarkAlreadyPurchasedItem) {
     User user("Anna");
     user.createShoppingList("Festa");
@@ -194,7 +195,8 @@ TEST(UserTest, MarkAlreadyPurchasedItem) {
     EXPECT_FALSE(secondMarkResult);
 
     // La torta è ancora acquistata (true)
-    for (const auto& item : list->getItems()) {
+    for (int i = 0; i < list->countTotalItems(); ++i) {
+        const auto& item = list->getItemAt(i);
         if (item.getName() == "Torta") {
             EXPECT_TRUE(item.isPurchased());
         }
@@ -212,8 +214,8 @@ TEST(UserTest, MarkNonExistentItem) {
 
     EXPECT_FALSE(result);
 
-    // Panini non deve essere marcato come acquistato
-    for (const auto& item : list->getItems()) {
+    for (int i = 0; i < list->countTotalItems(); ++i) {
+        const auto& item = list->getItemAt(i);
         EXPECT_FALSE(item.isPurchased());
     }
 }
