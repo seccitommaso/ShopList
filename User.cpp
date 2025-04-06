@@ -149,11 +149,8 @@ void User::viewAllShoppingLists() {
 User::~User()  {
     for(auto list : shoppingLists){
         list->unsubscribe(this);
-        delete list;
     }
 }
-
-
 
 const std::string &User::getName() const {
     return name;
